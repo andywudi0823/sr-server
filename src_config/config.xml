@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 指定properties配置文件， 我这里面配置的是数据库相关 -->
+    <properties resource="generatorConfig.properties"></properties>
+
+    <!-- 指定Mybatis使用log4j -->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!-- 上面指定了数据库配置文件， 配置文件里面也是对应的这四个属性 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射文件，mybatis精髓， 后面才会细讲 -->
+    <mappers>
+        <!--<mapper resource="cn/sykyd/db/model/CsdCabinetsMapper.xml"/>-->
+        <!--<mapper resource="cn/sykyd/db/model/CsdSecuritiesMapper.xml"/>-->
+        <mapper class="cn.sykyd.db.mapper.CsdSecuritiesMapper"/>
+        <mapper class="cn.sykyd.db.mapper.CsdSecurityLogsMapper"/>
+        <!--<mapper resource="cn/sykyd/db/model/CsdSecurityLogsMapper.xml"/>-->
+        <mapper class="cn.sykyd.db.mapper.CsdTicketsMapper"/>
+    </mappers>
+
+</configuration>

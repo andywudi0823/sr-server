@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sykyd.db.mapper.CsdSecurityLogsMapper">
+    <resultMap id="BaseResultMap" type="cn.sykyd.db.model.CsdSecurityLogs">
+        <id column="security_log_id" property="securityLogId" jdbcType="INTEGER"/>
+        <result column="security_id" property="securityId" jdbcType="INTEGER"/>
+        <result column="security_zone" property="securityZone" jdbcType="INTEGER"/>
+        <result column="unit_id" property="unitId" jdbcType="INTEGER"/>
+        <result column="room_id" property="roomId" jdbcType="INTEGER"/>
+        <result column="room_name" property="roomName" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="BIT"/>
+        <result column="is_display" property="isDisplay" jdbcType="BIT"/>
+        <result column="status" property="status" jdbcType="BIT"/>
+        <result column="created" property="created" jdbcType="CHAR"/>
+        <result column="modified" property="modified" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        security_log_id, security_id, security_zone, unit_id, room_id, room_name, `name`, type,
+        is_display, `status`, created, modified
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from csd_security_logs
+        where security_log_id = #{securityLogId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from csd_security_logs
+        where security_log_id = #{securityLogId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="cn.sykyd.db.model.CsdSecurityLogs">
+        insert into csd_security_logs (security_log_id, security_id, security_zone,
+        unit_id, room_id, room_name,
+        `name`, type, is_display, `status`,
+        created, modified)
+        values (#{securityLogId,jdbcType=INTEGER}, #{securityId,jdbcType=INTEGER}, #{securityZone,jdbcType=INTEGER},
+        #{unitId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{roomName,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{isDisplay,jdbcType=BIT}, #{status,jdbcType=BIT},
+        #{created,jdbcType=CHAR}, #{modified,jdbcType=CHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.sykyd.db.model.CsdSecurityLogs">
+        insert into csd_security_logs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="securityLogId != null">
+                security_log_id,
+            </if>
+            <if test="securityId != null">
+                security_id,
+            </if>
+            <if test="securityZone != null">
+                security_zone,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="roomName != null">
+                room_name,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="isDisplay != null">
+                is_display,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="securityLogId != null">
+                #{securityLogId,jdbcType=INTEGER},
+            </if>
+            <if test="securityId != null">
+                #{securityId,jdbcType=INTEGER},
+            </if>
+            <if test="securityZone != null">
+                #{securityZone,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="roomName != null">
+                #{roomName,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=BIT},
+            </if>
+            <if test="isDisplay != null">
+                #{isDisplay,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BIT},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.sykyd.db.model.CsdSecurityLogs">
+        update csd_security_logs
+        <set>
+            <if test="securityId != null">
+                security_id = #{securityId,jdbcType=INTEGER},
+            </if>
+            <if test="securityZone != null">
+                security_zone = #{securityZone,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="roomName != null">
+                room_name = #{roomName,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=BIT},
+            </if>
+            <if test="isDisplay != null">
+                is_display = #{isDisplay,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=BIT},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=CHAR},
+            </if>
+        </set>
+        where security_log_id = #{securityLogId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.sykyd.db.model.CsdSecurityLogs">
+        update csd_security_logs
+        set security_id = #{securityId,jdbcType=INTEGER},
+        security_zone = #{securityZone,jdbcType=INTEGER},
+        unit_id = #{unitId,jdbcType=INTEGER},
+        room_id = #{roomId,jdbcType=INTEGER},
+        room_name = #{roomName,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        type = #{type,jdbcType=BIT},
+        is_display = #{isDisplay,jdbcType=BIT},
+        `status` = #{status,jdbcType=BIT},
+        created = #{created,jdbcType=CHAR},
+        modified = #{modified,jdbcType=CHAR}
+        where security_log_id = #{securityLogId,jdbcType=INTEGER}
+    </update>
+</mapper>

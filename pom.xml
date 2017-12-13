@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.muqee</groupId>
+    <artifactId>sr-server</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>sr</name>
+    <url>http://sr.muqee.com</url>
+    <description>sr server</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- spring版本号 -->
+        <!--<spring.version>4.2.5.RELEASE</spring.version>-->
+
+        <!-- junit版本号 -->
+        <junit.version>4.11</junit.version>
+        <!-- mina版本号 -->
+        <mina.version>2.0.4</mina.version>
+
+        <!-- mybatis版本号 -->
+        <mybatis.version>3.2.8</mybatis.version>
+
+        <!-- mysql驱动版本号 -->
+        <mysql-driver.version>5.1.29</mysql-driver.version>
+        <!-- commons-dbcp版本号 -->
+        <commons-dbcp.version>1.2.2</commons-dbcp.version>
+        <!-- fastjson版本号 -->
+        <fastjson.version>1.1.41</fastjson.version>
+
+        <!-- log4j日志包版本号 -->
+        <slf4j.version>1.7.18</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+    <!-- 继承父包 -->
+    <parent>
+        <groupId>org.apache</groupId>
+        <artifactId>apache</artifactId>
+        <version>11</version>
+        <relativePath/>
+    </parent>
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+    <!--项目创建年份，4位数字。当产生版权信息时需要使用这个值。-->
+    <inceptionYear/>
+    <!--项目相关邮件列表信息-->
+    <mailingLists>
+        <!--该元素描述了项目相关的所有邮件列表。自动产生的网站引用这些信息。-->
+        <mailingList>
+            <!--邮件的名称-->
+            <name>Demo</name>
+            <!--发送邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建-->
+            <post>andywu@muqee.com</post>
+            <!--订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建-->
+            <subscribe>andywu@muqee.com</subscribe>
+            <!--取消订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建-->
+            <unsubscribe>andywu@muqee.com</unsubscribe>
+            <!--你可以浏览邮件信息的URL-->
+            <archive>http:/sr.sykyd.cn/dev/</archive>
+        </mailingList>
+    </mailingLists>
+    <!--项目开发者列表-->
+    <developers>
+        <!--某个项目开发者的信息-->
+        <developer>
+            <!--SCM里项目开发者的唯一标识符-->
+            <id>key</id>
+            <!--项目开发者的全名-->
+            <name>key</name>
+            <!--项目开发者的email-->
+            <email>key@muqee.com</email>
+            <!--项目开发者的主页的URL-->
+            <url>http://key.muqee.com</url>
+            <!--项目开发者在项目中扮演的角色，角色元素描述了各种角色-->
+            <roles>
+                <role>Architect</role>
+            </roles>
+            <!--项目开发者所属组织-->
+            <organization>muqee</organization>
+            <!--项目开发者所属组织的URL-->
+            <organizationUrl>http://www.muqee.com</organizationUrl>
+            <!--项目开发者属性，如即时消息如何处理等-->
+            <properties>
+                <dept>No</dept>
+            </properties>
+            <!--项目开发者所在时区， -11到12范围内的整数。-->
+            <timezone>-5</timezone>
+        </developer>
+        <!--某个项目开发者的信息-->
+        <developer>
+            <!--SCM里项目开发者的唯一标识符-->
+            <id>andywu</id>
+            <!--项目开发者的全名-->
+            <name>andywu</name>
+            <!--项目开发者的email-->
+            <email>andywu@muqee.com</email>
+            <!--项目开发者的主页的URL-->
+            <url>http://andywu.muqee.com</url>
+            <!--项目开发者在项目中扮演的角色，角色元素描述了各种角色-->
+            <roles>
+                <role>Project Manager</role>
+            </roles>
+            <!--项目开发者所属组织-->
+            <organization>muqee</organization>
+            <!--项目开发者所属组织的URL-->
+            <organizationUrl>http://www.muqee.com</organizationUrl>
+            <!--项目开发者属性，如即时消息如何处理等-->
+            <properties>
+                <dept>No</dept>
+            </properties>
+            <!--项目开发者所在时区， -11到12范围内的整数。-->
+            <timezone>-5</timezone>
+        </developer>
+    </developers>
+    <!--项目的其他贡献者列表-->
+    <contributors>
+        <!--项目的其他贡献者。参见developers/developer元素-->
+        <contributor>
+            <name/>
+            <email/>
+            <url/>
+            <organization/>
+            <organizationUrl/>
+            <roles/>
+            <timezone/>
+            <properties/>
+        </contributor>
+    </contributors>
+    <!--该元素描述了项目所有License列表。 应该只列出该项目的license列表，不要列出依赖项目的 license列表。如果列出多个license，用户可以选择它们中的一个而不是接受所有license。-->
+    <licenses>
+        <!--描述了项目的license，用于生成项目的web站点的license页面，其他一些报表和validation也会用到该元素。-->
+        <license>
+            <!--license用于法律上的名称-->
+            <name>sr</name>
+            <!--官方的license正文页面的URL-->
+            <url>http://sr.sykyd.cn/server/LICENSE-1.0.txt</url>
+            <!--项目分发的主要方式：
+              repo，可以从Maven库下载
+              manual， 用户必须手动下载和安装依赖-->
+            <distribution>repo</distribution>
+            <!--关于license的补充信息-->
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <!--SCM(Source Control Management)标签允许你配置你的代码库，供Maven web站点和其它插件使用。-->
+    <scm>
+        <!--SCM的URL,该URL描述了版本库和如何连接到版本库。欲知详情，请看SCMs提供的URL格式和列表。该连接只读。-->
+        <connection>
+            scm:svn:http://svn.baidu.com/banseon/maven/banseon/banseon-maven2-trunk(dao-trunk)
+        </connection>
+        <!--给开发者使用的，类似connection元素。即该连接不仅仅只读-->
+        <developerConnection>
+            scm:svn:http://svn.baidu.com/banseon/maven/banseon/dao-trunk
+        </developerConnection>
+        <!--当前代码的标签，在开发阶段默认为HEAD-->
+        <tag/>
+        <!--指向项目的可浏览SCM库（例如ViewVC或者Fisheye）的URL。-->
+        <url>http://svn.baidu.com/banseon</url>
+    </scm>
+    <!--描述项目所属组织的各种属性。Maven产生的文档用-->
+    <organization>
+        <!--组织的全名-->
+        <name>sykyd</name>
+        <!--组织主页的URL-->
+        <url>http://sr.sykyd.cn/</url>
+    </organization>
+    <dependencies>
+        <!-- 添加junit4依赖 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!-- 指定范围，在测试时才会加载 -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>${mina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-filter-compression</artifactId>
+            <version>${mina.version}</version>
+        </dependency>
+        <!-- 添加mybatis依赖 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!-- 添加mysql驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-driver.version}</version>
+        </dependency>
+        <!-- 添加数据库连接池依赖 -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
+        </dependency>
+
+        <!-- 添加fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <!-- 添加日志相关jar包 -->
+        <dependency>
+            <groupId>ognl</groupId>
+            <artifactId>ognl</artifactId>
+            <version>2.6.9</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.0.2</version>
+            <optional>true</optional>
+        </dependency>
+        <!-- log end -->
+        <!-- 映入JSON -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+                <version>3.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-driver.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--配置文件的路径-->
+                    <configurationFile>src_config/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+
+        </plugins>
+        <resources>
+            <!-- 配置多个资源文件夹 -->
+            <resource>
+                <directory>src_config</directory>
+            </resource>
+        </resources>
+    </build>
+</project>

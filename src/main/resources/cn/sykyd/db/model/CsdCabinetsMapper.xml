@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sykyd.db.mapper.CsdCabinetsMapper">
+    <resultMap id="BaseResultMap" type="cn.sykyd.db.model.CsdCabinets">
+        <id column="cabinet_id" property="cabinetId" jdbcType="INTEGER"/>
+        <result column="unit_id" property="unitId" jdbcType="INTEGER"/>
+        <result column="room_id" property="roomId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="sn" property="sn" jdbcType="VARCHAR"/>
+        <result column="row" property="row" jdbcType="INTEGER"/>
+        <result column="column" property="column" jdbcType="INTEGER"/>
+        <result column="total" property="total" jdbcType="INTEGER"/>
+        <result column="used" property="used" jdbcType="INTEGER"/>
+        <result column="unused" property="unused" jdbcType="INTEGER"/>
+        <result column="order" property="order" jdbcType="TINYINT"/>
+        <result column="created" property="created" jdbcType="CHAR"/>
+        <result column="modified" property="modified" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        cabinet_id, unit_id, room_id, name, sn, row, column, total, used, unused, order,
+        created, modified
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from csd_cabinets
+        where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from csd_cabinets
+        where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="cn.sykyd.db.model.CsdCabinets">
+        insert into csd_cabinets (cabinet_id, unit_id, room_id,
+        name, sn, row, column,
+        total, used, unused,
+        order, created, modified)
+        values (#{cabinetId,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER},
+        #{name,jdbcType=VARCHAR}, #{sn,jdbcType=VARCHAR}, #{row,jdbcType=INTEGER}, #{column,jdbcType=INTEGER},
+        #{total,jdbcType=INTEGER}, #{used,jdbcType=INTEGER}, #{unused,jdbcType=INTEGER},
+        #{order,jdbcType=TINYINT}, #{created,jdbcType=CHAR}, #{modified,jdbcType=CHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.sykyd.db.model.CsdCabinets">
+        insert into csd_cabinets
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cabinetId != null">
+                cabinet_id,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="sn != null">
+                sn,
+            </if>
+            <if test="row != null">
+                row,
+            </if>
+            <if test="column != null">
+                column,
+            </if>
+            <if test="total != null">
+                total,
+            </if>
+            <if test="used != null">
+                used,
+            </if>
+            <if test="unused != null">
+                unused,
+            </if>
+            <if test="order != null">
+                order,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cabinetId != null">
+                #{cabinetId,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sn != null">
+                #{sn,jdbcType=VARCHAR},
+            </if>
+            <if test="row != null">
+                #{row,jdbcType=INTEGER},
+            </if>
+            <if test="column != null">
+                #{column,jdbcType=INTEGER},
+            </if>
+            <if test="total != null">
+                #{total,jdbcType=INTEGER},
+            </if>
+            <if test="used != null">
+                #{used,jdbcType=INTEGER},
+            </if>
+            <if test="unused != null">
+                #{unused,jdbcType=INTEGER},
+            </if>
+            <if test="order != null">
+                #{order,jdbcType=TINYINT},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.sykyd.db.model.CsdCabinets">
+        update csd_cabinets
+        <set>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sn != null">
+                sn = #{sn,jdbcType=VARCHAR},
+            </if>
+            <if test="row != null">
+                row = #{row,jdbcType=INTEGER},
+            </if>
+            <if test="column != null">
+                column = #{column,jdbcType=INTEGER},
+            </if>
+            <if test="total != null">
+                total = #{total,jdbcType=INTEGER},
+            </if>
+            <if test="used != null">
+                used = #{used,jdbcType=INTEGER},
+            </if>
+            <if test="unused != null">
+                unused = #{unused,jdbcType=INTEGER},
+            </if>
+            <if test="order != null">
+                order = #{order,jdbcType=TINYINT},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=CHAR},
+            </if>
+        </set>
+        where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.sykyd.db.model.CsdCabinets">
+        update csd_cabinets
+        set unit_id = #{unitId,jdbcType=INTEGER},
+        room_id = #{roomId,jdbcType=INTEGER},
+        name = #{name,jdbcType=VARCHAR},
+        sn = #{sn,jdbcType=VARCHAR},
+        row = #{row,jdbcType=INTEGER},
+        column = #{column,jdbcType=INTEGER},
+        total = #{total,jdbcType=INTEGER},
+        used = #{used,jdbcType=INTEGER},
+        unused = #{unused,jdbcType=INTEGER},
+        order = #{order,jdbcType=TINYINT},
+        created = #{created,jdbcType=CHAR},
+        modified = #{modified,jdbcType=CHAR}
+        where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+    </update>
+</mapper>

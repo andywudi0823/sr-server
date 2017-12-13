@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sykyd.db.mapper.CsdSecuritiesMapper">
+    <resultMap id="BaseResultMap" type="cn.sykyd.db.model.CsdSecurities">
+        <id column="security_id" property="securityId" jdbcType="INTEGER"/>
+        <result column="security_zone" property="securityZone" jdbcType="INTEGER"/>
+        <result column="unit_id" property="unitId" jdbcType="INTEGER"/>
+        <result column="room_id" property="roomId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="BIT"/>
+        <result column="param" property="param" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="BIT"/>
+        <result column="created" property="created" jdbcType="CHAR"/>
+        <result column="modified" property="modified" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        security_id, security_zone, unit_id, room_id, `name`, type, param, `status`, created,
+        modified
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from csd_securities
+        where security_id = #{securityId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM csd_securities
+        WHERE security_id = #{securityId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="cn.sykyd.db.model.CsdSecurities">
+        INSERT INTO csd_securities (security_id, security_zone, unit_id,
+        room_id, `name`, type, param,
+        `status`, created, modified)
+        VALUES (#{securityId,jdbcType=INTEGER}, #{securityZone,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER},
+        #{roomId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{param,jdbcType=VARCHAR},
+        #{status,jdbcType=BIT}, #{created,jdbcType=CHAR}, #{modified,jdbcType=CHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.sykyd.db.model.CsdSecurities">
+        insert into csd_securities
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="securityId != null">
+                security_id,
+            </if>
+            <if test="securityZone != null">
+                security_zone,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="param != null">
+                param,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="securityId != null">
+                #{securityId,jdbcType=INTEGER},
+            </if>
+            <if test="securityZone != null">
+                #{securityZone,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=BIT},
+            </if>
+            <if test="param != null">
+                #{param,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BIT},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.sykyd.db.model.CsdSecurities">
+        update csd_securities
+        <set>
+            <if test="securityZone != null">
+                security_zone = #{securityZone,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=BIT},
+            </if>
+            <if test="param != null">
+                param = #{param,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=BIT},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=CHAR},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=CHAR},
+            </if>
+        </set>
+        where security_id = #{securityId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.sykyd.db.model.CsdSecurities">
+        UPDATE csd_securities
+        SET security_zone = #{securityZone,jdbcType=INTEGER},
+        unit_id = #{unitId,jdbcType=INTEGER},
+        room_id = #{roomId,jdbcType=INTEGER},
+        `name` = #{name,jdbcType=VARCHAR},
+        type = #{type,jdbcType=BIT},
+        param = #{param,jdbcType=VARCHAR},
+        `status` = #{status,jdbcType=BIT},
+        created = #{created,jdbcType=CHAR},
+        modified = #{modified,jdbcType=CHAR}
+        WHERE security_id = #{securityId,jdbcType=INTEGER}
+    </update>
+</mapper>
