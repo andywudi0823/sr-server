@@ -25,29 +25,6 @@ public class ServerHandler extends IoHandlerAdapter {
         Class<?> c = Class.forName("cn.sykyd.biz.State" + o.getInteger("type"));
         s = (IState) c.newInstance();
         s.exec(o);
-//        if (o.getInteger("type") == 1) {
-//            JSONObject s = o.getJSONObject("data");
-//            System.out.println(s.getInteger("room_id"));
-//            System.out.println(s.getInteger("security_zone"));
-////            SecurityModel sm = new SecurityModel();
-////            sm.room_id = s.getInteger("room_id");
-////            sm.security_zone = s.getInteger("security_zone");
-////            sm.status = s.getInteger("status");
-////            sm.execute();
-//        } else if (o.getInteger("type") == 2) {
-//            JSONObject s = o.getJSONObject("data");
-//            System.out.println(s.getInteger("id"));
-//            System.out.println(s.getInteger("row"));
-//            System.out.println(s.getInteger("column"));
-//            System.out.println(s.getInteger("status"));
-////            TicketMachineModel t = new TicketMachineModel();
-////            t.id = s.getInteger("id");
-////            t.row = s.getInteger("row");
-////            t.column = s.getInteger("column");
-////            t.status = s.getInteger("status");
-////            t.execute();
-//        }
-        // 根据传来的数据进行处理
     }
 
     @Override
